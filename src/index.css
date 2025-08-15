@@ -82,6 +82,8 @@ input {
   align-items: center;
   justify-content: center;
   padding: 20px;
+    background: pink;
+
 }
 
 .bookCardsDiv {
@@ -103,7 +105,14 @@ input {
   margin: 15px 10px;
   background-color: rgb(155, 155, 155);
   color: black;
+  
 }
+
+ul {
+  border: 15px solid hotpink;
+}
+
+
 
 @media (prefers-color-scheme: light) {
   :root {

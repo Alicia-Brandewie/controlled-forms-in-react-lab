@@ -7,21 +7,20 @@ const Bookshelf = () => {
     { title: 'The Lion, the Witch and the Wardrobe', author: 'C.S. Lewis' },
   ])
 
-  const [newBook, setNewBook] = useState([
-    // { title: '', author: '' },
-  ])
+  const [newBook, setNewBook] = useState(
+    { title: '', author: '' },
+  )
 
 
-  const handleInputChange = (eventInput) => {
+  const handleInputChange = (event) => {
     // setBookInput(eventInput.target.value);
-    setNewBook({ ...newBook, [eventInput.target.name]: eventInput.target.value })
+    setNewBook({ ...newBook, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (eventInput) => {
-    // setBookInput(eventInput.target.value);
-    eventInput.preventDefault();
-    setBooks({ ...books, [eventInput.target.name]: eventInput.target.value });
-    setNewBook()
+  const handleSubmit = (event) => {
+    event.preventDefault();
+        setBooks([...books, newBook]);
+    setNewBook({title: '', author: ''});
   };
 
   return (
@@ -31,18 +30,18 @@ const Bookshelf = () => {
           <h3>Add a Book</h3>
 
           <form onSubmit={handleSubmit}>
-            <label htmlFor="title">Title:</label>
+            <label>Title:</label>
             <input
-              type="text"
+              // type="text"
               id="title"
               name="title"
               value={newBook.title}
               onChange={handleInputChange}
             />
 
-            <label htmlFor="author">Author:</label>
+            <label>Author:</label>
             <input
-              type="text"
+              // type="text"
               id="author"
               name="author"
               value={newBook.author}
@@ -54,13 +53,17 @@ const Bookshelf = () => {
 
 
         </div>
-        <div className="bookCardsDiv">{/* Book cards will display here */}
-          {books.map((book) => (
+        <div className="bookCardsDiv">
+                    {books.map((book) => (
+
             <ul>
-              <h4 title={book.title}></h4>
-              <h4 author={book.author}></h4>
+              <h3 key={book.title}> {book.title}</h3>
+              <h4 key={book.author}>By:{book.author}</h4>
+
             </ul>
-          ))}
+                        ))};
+
+
         </div>
       </div>
 
